@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HomeScreenSpy</string>
+    <string name="hello_world">This app collects data on your home screen usage.</string>
+    <string name="action_settings">Settings</string>
+    <string name="install_button_str">Install wallpaper</string>
+    <string name="wallpaper_description">Homescreen wallpaper to gather stats.</string>
+</resources>
