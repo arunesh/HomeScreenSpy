@@ -8,6 +8,8 @@ import android.preference.PreferenceManager;
 import android.service.wallpaper.WallpaperService;
 import android.util.Log;
 
+import java.io.File;
+
 /**
  * Created by arunesh on 2/2/15.
  */
@@ -36,12 +38,15 @@ public class MyWallpaperService extends WallpaperService {
         public void onVisibilityChanged(boolean visible) {
             if (visible) {
                 Log.i(TAG, "HomeScreen made visible.");
+                FileOutput.get().writeHomeScreenVisibileEvent();
                 lastVisibilityStartTs = System.currentTimeMillis();
                 handler.post(drawRunner);
             } else {
+                FileOutput.get().writeHomeScreenInvisibleEvent();
                 if (lastVisibilityStartTs > 0) {
                     long delta = System.currentTimeMillis() - lastVisibilityStartTs;
                     Log.i(TAG, "Delta = " + delta);
+                    FileOutput.get().write("Home screen delta: " + delta);
                 }
                 handler.removeCallbacks(drawRunner);
             }
